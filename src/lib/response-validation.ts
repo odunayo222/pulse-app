@@ -136,6 +136,17 @@ export function toSubmitAnswers(
   return questions.flatMap((question) => {
     const value = answers[question.id] ?? null;
     if (isEmptyAnswer(value)) return [];
+
+    if (question.type === "multiple_choice") {
+      const selected = Array.isArray(value)
+        ? value
+        : typeof value === "string"
+          ? [value.trim()]
+          : [];
+      if (selected.length === 0) return [];
+      return [{ questionId: question.id, value: selected }];
+    }
+    
     const clean = typeof value === "string" ? value.trim() : value;
     return [{ questionId: question.id, value: clean as SubmitAnswer["value"] }];
   });

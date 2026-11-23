@@ -149,6 +149,6 @@ export const mockResponses: FormResponse[] = [
     id: `response-003-${i + 1}`,
     form_id: "form-003",
     submitted_at: new Date(Date.UTC(2026, 8, 10 + (i % 5), 12, i * 3)).toISOString(),
-    answers: [{ questionId: "question-008", value: snacks[[0, 1, 1, 2, 0, 1, 3, 1, 2, 1, 0, 1, 2, 1][i]] }],
+    answers: [{ questionId: "question-008", value: [snacks[[0, 1, 1, 2, 0, 1, 3, 1, 2, 1, 0, 1, 2, 1][i]]] }],
   })),
 ];
